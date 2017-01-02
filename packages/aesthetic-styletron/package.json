@@ -1,0 +1,34 @@
+{
+  "name": "aesthetic-styletron",
+  "version": "0.0.0",
+  "description": "Styletron support for Aesthetic.",
+  "keywords": [
+    "aesthetic",
+    "react",
+    "styles",
+    "styletron"
+  ],
+  "repository": "https://github.com/milesj/aesthetic/tree/master/packages/aesthetic-styletron",
+  "license": "MIT",
+  "main": "./lib/StyletronAdapter.js",
+  "files": [
+    "*.md",
+    "lib"
+  ],
+  "scripts": {
+    "build": "node ../../node_modules/.bin/babel ./src -d ./lib"
+  },
+  "dependencies": {
+    "lodash.merge": "^4.6.0"
+  },
+  "peerDependencies": {
+    "aesthetic": "^0.1.0",
+    "styletron-client": "^2.3.0",
+    "styletron-utils": "^2.3.0"
+  },
+  "devDependencies": {
+    "aesthetic": "^0.1.0",
+    "styletron-client": "^2.3.0",
+    "styletron-utils": "^2.3.0"
+  }
+}
