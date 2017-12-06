@@ -49,7 +49,7 @@ export default class UnifiedSyntax {
    * Convert the unified syntax to adapter specific syntax
    * by extracting at-rules and applying conversions at each level.
    */
-  convert(declarations: StyleDeclarations): StyleDeclarations {
+  convert(declarations: StyleDeclarations, onlyAtRules?: boolean = false): StyleDeclarations {
     this.resetLocalCache();
     this.emit('converting');
 
@@ -65,13 +65,15 @@ export default class UnifiedSyntax {
     });
 
     // Apply conversion to properties
-    Object.keys(adaptedDeclarations).forEach((selector) => {
-      const declaration = declarations[selector];
+    if (!onlyAtRules) {
+      Object.keys(adaptedDeclarations).forEach((selector) => {
+        const declaration = declarations[selector];
 
-      if (typeof declaration !== 'string') {
-        adaptedDeclarations[selector] = this.convertDeclaration(selector, declaration);
-      }
-    });
+        if (typeof declaration !== 'string') {
+          adaptedDeclarations[selector] = this.convertDeclaration(selector, declaration);
+        }
+      });
+    }
 
     this.emit('converted');
 

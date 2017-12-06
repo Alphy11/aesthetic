@@ -4,7 +4,7 @@
  * @flow
  */
 
-import type { TransformedDeclarations } from '../../types';
+import type { GlobalDeclaration, TransformedDeclarations } from '../../types';
 
 export default class Adapter {
   bypassNativeStyleSheet: boolean = false;
@@ -22,5 +22,12 @@ export default class Adapter {
    */
   transform<T: Object>(styleName: string, declarations: T): TransformedDeclarations {
     throw new Error(`${this.constructor.name} must define the \`transform\` method.`);
+  }
+
+  /**
+   * Transforms and apply global styles.
+   */
+  transformGlobals(declarations: GlobalDeclaration) {
+    this.transform(':root', declarations);
   }
 }
